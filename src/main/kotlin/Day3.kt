@@ -1,9 +1,9 @@
 class Day3 {
 
     fun Char.toValue(): Int = if (isLowerCase()) {
-        code - 'a'.code + 1
+        this - 'a' + 1
     } else {
-        code - 'A'.code + 27
+        this - 'A' + 27
     }
 
     fun solve(items: List<String>): Int {
@@ -20,22 +20,5 @@ class Day3 {
             sortedGGroup[0].first { it in sortedGGroup[1] && it in sortedGGroup[2] }
         }.sumOf { it.toValue() }
     }
-
-}
-
-fun main() {
-
-    val items = """
-        vJrwpWtwJgWrhcsFMMfFFhFp
-        jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
-        PmmdzqPrVvPwwTWBwg
-        wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
-        ttgJtRGJQctTZtZT
-        CrZsJsPPZsGzwwsLwLmpwMDw
-    """.trimIndent()
-
-    val day = Day3()
-
-    println(day.solve(items.lines()))
 
 }

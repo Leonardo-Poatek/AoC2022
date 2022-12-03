@@ -14,14 +14,13 @@ class Day2 {
     }
 
     private fun getRoundSum(round:String): Int {
-        val split = round.split(" ")
-        val playValue = split[1].codePointAt(0) - 'X'.code + 1
-        val opponentValue = split[0].codePointAt(0) - 'A'.code + 1
+        val playValue = round[2] - 'X' + 1
+        val opponentValue = round[0] - 'A' + 1
         val result = when {
             playValue == opponentValue -> 3
-            split[1] == "X" && split[0] == "C"
-                    || split[1] == "Y" && split[0] == "A"
-                    || split[1] == "Z" && split[0] == "B" -> 6
+            round[2] == 'X' && round[0] == 'C'
+                    || round[2] == 'Y' && round[0] == 'A'
+                    || round[2] == 'Z' && round[0] == 'B' -> 6
             else -> 0
         }
         return result + playValue
@@ -43,13 +42,13 @@ class Day2 {
 
     private fun getRoundSum2(round:String): Int {
         //Get the objective points, that is X,Y,Z mapped to 0,3,6
-        val goal = (round[2].code - 'X'.code) * 3
+        val goal = (round[2] - 'X') * 3
         var play =  when(round[2]) {
             'X' -> 2
             'Y' -> 3
             else -> 1
         }
-        play = (((round[0].code - 'A'.code) + play) % 3) + 1
+        play = (((round[0] - 'A') + play) % 3) + 1
         return goal + play
     }
 

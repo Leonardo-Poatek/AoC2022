@@ -17,19 +17,25 @@ class Day5 {
     private fun parseStacks(lines: List<String>): List<Stack<Char>> {
         val stacks = arrayListOf<Stack<Char>>()
 
+        /*
+            35 chars
+            [Q] [Q] [B] [D] [J] [W] [H] [R] [J] = 11
+             1   5   9   13
+
+             number of lines = charCount + 1 / 4 (+ 1 cause were missing a space)
+
+            */
+
         lines.filter { it.isNotBlank() }.dropLast(1).reversed().apply {
             repeat((first().length + 1) / 4) { stacks.add(Stack()) }
         }.forEach { line ->
 
-            /*
-            [Z] [M] [P]
-             1   5   9
-             0   4   8
-             (Index * 4) + 1 = letter or nothing
 
-             35 chars
-             [Q] [Q] [B] [D] [J] [W] [H] [R] [J] = 11
-              1   5   9   13
+            /*
+           [Z] [M] [P]
+            1   5   9
+            0   4   8
+            (Index * 4) + 1 = letter or nothing
              */
 
             (0 until stacks.size).forEach { index ->

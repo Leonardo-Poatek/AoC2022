@@ -23,7 +23,6 @@ class Day7Test {
         }
     }
 
-
     val items = """
         ${'$'} cd /
         ${'$'} ls

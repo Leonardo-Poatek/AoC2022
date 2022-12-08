@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2e96f14-712d-4e3d-b89c-1b9f7c68a169" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Day8.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/Day8Test.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Day6.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Day6.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Day7.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Day7.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Day8.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Day8.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/Day7Test.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/Day7Test.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/Day8Test.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/Day8Test.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,26 +59,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Day7Test">
-    <configuration name="Day5Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AdventOfCode2022" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Day5Test" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Day6Test.solve1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AdventOfCode2022" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Day6Test" />
-      <option name="METHOD_NAME" value="solve1" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.Day8Test.solve2">
     <configuration name="Day6Test.solve2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AdventOfCode2022" />
       <option name="PACKAGE_NAME" value="" />
@@ -110,13 +89,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Day8Test.solve1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AdventOfCode2022" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Day8Test" />
+      <option name="METHOD_NAME" value="solve1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Day8Test.solve2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AdventOfCode2022" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Day8Test" />
+      <option name="METHOD_NAME" value="solve2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Day8Test.solve2" />
+        <item itemvalue="JUnit.Day8Test.solve1" />
         <item itemvalue="JUnit.Day7Test" />
         <item itemvalue="JUnit.Day7Test.solve1" />
         <item itemvalue="JUnit.Day6Test.solve2" />
-        <item itemvalue="JUnit.Day6Test.solve1" />
-        <item itemvalue="JUnit.Day5Test" />
       </list>
     </recent_temporary>
   </component>
@@ -171,9 +170,24 @@
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/main/kotlin/Day7.kt</url>
-          <line>123</line>
-          <option name="timeStamp" value="13" />
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Day8.kt</url>
+          <line>70</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Day8.kt</url>
+          <line>35</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Day8.kt</url>
+          <line>47</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Day8.kt</url>
+          <line>109</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

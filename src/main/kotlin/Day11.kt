@@ -1,13 +1,23 @@
-import java.io.InvalidObjectException
 import java.math.BigInteger
 import java.util.ArrayDeque
 import java.util.Queue
 
 class Day11 {
 
-    data class Item(val worry: BigInteger, val knownDividers: HashSet<Int>) {
-        fun multiply(value: Int): Item = Item(worry * value.toBigInteger(), knownDividers)
-        fun add(value: Int) = Item(worry + value.toBigInteger(), HashSet())
+    /**
+     * If X can be divided by Y, then any factor of X is also dividable by Y.
+     */
+    data class Item(val worry: Int, val knownDividers: HashSet<Int> = hashSetOf(), val previous: Item? = null) {
+        fun multiply(value: Int): Item {
+            val item = if (worry * value < 0) {
+                Item(knownDividers.fold(value) { acc: Int, i: Int -> acc * i }, knownDividers.toHashSet(), this)
+            } else {
+                Item(worry * value, knownDividers.toHashSet(), this)
+            }
+            return item
+        }
+
+        fun add(value: Int) = Item(worry + value, knownDividers.filter { it % (worry + value) == 0 }.toHashSet(), this)
     }
 
     val monkeyRegex = ("Monkey ([0-9]+):\n" +
@@ -20,7 +30,7 @@ class Day11 {
     data class Monkey(
         val number: Int,
         val items: Queue<Long>,
-        val operation: (Long) -> Long,
+        val operationRaw: MatchResult,
         val testDivisible: Int,
         val successThrow: Int,
         val failThrow: Int,
@@ -28,33 +38,44 @@ class Day11 {
 
         var inspections = 0L
 
+        fun operation(old: Long): Long {
+
+            val operator = operationRaw.groups[4]!!.value
+
+            val second: Long = if (operationRaw.groups[5]!!.value == "old") {
+                old
+            } else {
+                operationRaw.groups[5]!!.value.toLong()
+            }
+
+            return if (operator == "+") {
+                old + second
+            } else {
+                old * second
+            }
+        }
+
+        fun inspect(otherMonkeys: List<Monkey>, factor: Long) {
+            inspections++
+
+            var item = items.poll()
+
+            item = operation(item) % factor
+
+            if (item % testDivisible == 0L) {
+                otherMonkeys[successThrow].items.add(item)
+            } else {
+                otherMonkeys[failThrow].items.add(item)
+            }
+        }
+
         companion object {
             fun fromMatchResult(monkeyText: MatchResult): Monkey {
-
-                val operation = { old: Long ->
-                    val first: Long = if(monkeyText.groups[3]!!.value == "old") {
-                        old
-                    } else {
-                        monkeyText.groups[3]!!.value.toLong()
-                    }
-
-                    val second: Long = if(monkeyText.groups[5]!!.value == "old") {
-                        old
-                    } else {
-                        monkeyText.groups[5]!!.value.toLong()
-                    }
-
-                    if(monkeyText.groups[4]!!.value == "+") {
-                        first + second
-                    } else {
-                        first * second
-                    }
-                }
 
                 return Monkey(
                     monkeyText.groups[1]!!.value.toInt(),
                     ArrayDeque(monkeyText.groups[2]!!.value.split(", ").map { it.toLong() }),
-                    operation,
+                    monkeyText,
                     monkeyText.groups[6]!!.value.toInt(),
                     monkeyText.groups[7]!!.value.toInt(),
                     monkeyText.groups[8]!!.value.toInt(),
@@ -62,16 +83,6 @@ class Day11 {
             }
         }
 
-        fun inspect(otherMonkeys: List<Monkey>) {
-            inspections++
-            val item = operation(items.poll())
-            if(item < 0) throw InvalidObjectException("Overflow")
-            if(item.mod(testDivisible) == 0) {
-                otherMonkeys[successThrow].items.add(item)
-            } else {
-                otherMonkeys[failThrow].items.add(item)
-            }
-        }
     }
 
     private fun parseMonkeys(input: String): List<Monkey> {
@@ -80,17 +91,15 @@ class Day11 {
         }
     }
 
-    /**
-     * If X can be divided by Y, then any factor of X is also dividable by Y.
-     */
 
     fun solve(input: String): Long {
         val monkeys = parseMonkeys(input)
+        val factor = monkeys.fold(1L) { acc, monkey -> acc * monkey.testDivisible }
         repeat(10_000) {
             //println("Round $it")
             monkeys.forEach {
                 while (it.items.isNotEmpty()) {
-                    it.inspect(monkeys)
+                    it.inspect(monkeys, factor)
                 }
             }
         }

@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d2e96f14-712d-4e3d-b89c-1b9f7c68a169" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Day8.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Day8.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/Day7Test.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/Day7Test.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/Day8Test.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/Day8Test.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Day11.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Day11.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/Day11Test.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/Day11Test.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,42 +58,21 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Day8Test.solve2">
-    <configuration name="Day6Test.solve2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.Day11Test">
+    <configuration name="Day10Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AdventOfCode2022" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Day6Test" />
-      <option name="METHOD_NAME" value="solve2" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Day7Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AdventOfCode2022" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Day7Test" />
+      <option name="MAIN_CLASS_NAME" value="Day10Test" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Day7Test.solve1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Day11Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AdventOfCode2022" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Day7Test" />
-      <option name="METHOD_NAME" value="solve1" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Day8Test.solve1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AdventOfCode2022" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Day8Test" />
-      <option name="METHOD_NAME" value="solve1" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="Day11Test" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -109,13 +87,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Day9Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AdventOfCode2022" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Day9Test" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Day9Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Day9Kt" />
+      <module name="AdventOfCode2022" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Day11Test" />
+        <item itemvalue="JUnit.Day10Test" />
+        <item itemvalue="JUnit.Day9Test" />
+        <item itemvalue="Kotlin.Day9Kt" />
         <item itemvalue="JUnit.Day8Test.solve2" />
-        <item itemvalue="JUnit.Day8Test.solve1" />
-        <item itemvalue="JUnit.Day7Test" />
-        <item itemvalue="JUnit.Day7Test.solve1" />
-        <item itemvalue="JUnit.Day6Test.solve2" />
       </list>
     </recent_temporary>
   </component>
@@ -189,14 +183,61 @@
           <line>109</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <condition expression="i == 5" language="kotlin" />
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Day9.kt</url>
+          <line>31</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Day9.kt</url>
+          <line>32</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Day9.kt</url>
+          <line>61</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Day9.kt</url>
+          <line>52</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Day9.kt</url>
+          <line>43</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Day9.kt</url>
+          <line>35</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Day11.kt</url>
+          <line>105</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Day11.kt</url>
+          <line>12</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/Day11.kt</url>
+          <line>16</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
-      <configuration name="JUnit">
-        <watch expression="split.first().lines()" language="kotlin" />
-        <watch expression="split.first().replace(&quot;] [&quot;, &quot; &quot;).replace(&quot;]&quot;, &quot;&quot;).replace(&quot;[&quot;, &quot;&quot;)" language="kotlin" />
-        <watch expression="items.subSequence(i - 3, i)" language="kotlin" />
-        <watch expression="items.subSequence(i - 4, i)" language="kotlin" />
+      <configuration name="JetRunConfigurationType">
+        <watch expression="rope[i - 1]" language="kotlin" />
+        <watch expression="rope[i]" language="kotlin" />
       </configuration>
     </watches-manager>
   </component>

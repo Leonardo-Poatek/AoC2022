@@ -12,11 +12,11 @@ class Day11Test {
         println(solution.solve(realInput.trim()))
     }
 
-    val firstInput = """
-        noop
-        addx 3
-        addx -5
-    """.trimIndent()
+    @Test
+    fun solve2() {
+        assertEquals(2713310158, solution.solve(sampleInput.trim()))
+        println(solution.solve(realInput.trim()))
+    }
 
     val sampleInput = """
 Monkey 0:

@@ -1,6 +1,4 @@
 import kotlin.math.abs
-import kotlin.math.max
-import kotlin.math.min
 
 inline val Pair<Int, Int>.x: Int
     get() = first
@@ -13,17 +11,56 @@ class Day15 {
 
     val regex = "Sensor at x=(-*[0-9]+), y=(-*[0-9]+): closest beacon is at x=(-*[0-9]+), y=(-*[0-9]+)".toRegex()
 
-    fun solve(input: List<String>, countRow: Int, minCoord: Int, maxCoord: Int): Int {
+    fun solve1(input: List<String>, targetRow: Int): Int {
+
+        val parsedInput = getRangePositionsAndBeacons(input, Int.MIN_VALUE, Int.MAX_VALUE)
+        val rangePositions = parsedInput.first
+        val beacons = parsedInput.second
+
+        val beaconsOnLine = beacons.count { it.y == targetRow }
+
+        val line = rangePositions[targetRow]!!.fold(hashSetOf<Int>()) { acc, intRange ->
+            acc.addAll(intRange.toList())
+            acc
+        }
+
+        return line.size - beaconsOnLine
+    }
+
+    fun solve2(input: List<String>, minCoord: Int, maxCoord: Int): Long {
+
+        val parsedInput = getRangePositionsAndBeacons(input, minCoord, maxCoord)
+        val rangePositions = parsedInput.first
+        val beacons = parsedInput.second
+
+        rangePositions.forEach { line ->
+            val beaconsOnLine = beacons.filter { it.y == line.key }.map { it.x..it.x }.toSet()
+            var ranges = listOf((minCoord..maxCoord))
+            beaconsOnLine.forEach { beaconPos -> ranges = ranges.subtract(beaconPos) }
+            line.value.forEach { ranges = ranges.subtract(it) }
+
+            if (ranges.size == 1) {
+                val posX = ranges.first().first
+                println("Position: ${posX}, ${line.key}")
+                return posX * 4000000L + line.key
+            }
+        }
+
+        return -1
+    }
+
+    private fun getRangePositionsAndBeacons(
+        input: List<String>,
+        minCoord: Int,
+        maxCoord: Int
+    ): Pair<HashMap<Int, HashSet<IntRange>>, HashSet<Pair<Int, Int>>> {
 
         val rangePositions = hashMapOf<Int, HashSet<IntRange>>()
-
         val beacons = hashSetOf<Pair<Int, Int>>()
-        val sensors = hashSetOf<Pair<Int, Int>>()
 
         input.map {
             val match = regex.find(it)?.groups!!
             val sensor = match[1]!!.value.toInt() to match[2]!!.value.toInt()
-            sensors.add(sensor)
 
             val beacon = match[3]!!.value.toInt() to match[4]!!.value.toInt()
             beacons.add(beacon)
@@ -37,60 +74,46 @@ class Day15 {
             val boxHeight = abs(sensor.y - beacon.y) * 2 + 1
             val boxWidth = abs(sensor.x - beacon.x) * 2 + 1
 
-            val remainingSide = boxHeight / 2
             val remainingTop = boxWidth / 2
 
             val topY = (sensor.y - boxHeight / 2 - remainingTop)
             val bottomY = (sensor.y + boxHeight / 2 + remainingTop)
-            var minX = sensor.x
-            var maxX = sensor.x
 
-            //Go from top to middle
-            for (y in topY until sensor.y) {
-                if (y in minCoord..maxCoord) {
-                    val range = minX.coerceAtLeast(minCoord)..maxX.coerceAtMost(maxCoord)
-                    rangePositions.getOrPut(y) { hashSetOf() }.add(range)
-                }
-                minX--; maxX++
-            }
-
-            //From middle to bottom
-            for (y in sensor.y until bottomY) {
-                if (y in minCoord..maxCoord) {
-                    val range = minX.coerceAtLeast(minCoord)..maxX.coerceAtMost(maxCoord)
-                    rangePositions.getOrPut(y) { hashSetOf() }.add(range)
-                }
-                minX++; maxX--
-            }
+            addRanges(rangePositions, sensor, topY, bottomY, minCoord, maxCoord)
         }
 
-//        val line = hashSetOf<Int>()
-//        rangePositions[countRow]?.let {
-//            it.forEach { range -> range.forEach { line.add(it) } }
-//        }
+        return rangePositions to beacons
+    }
 
-        rangePositions.forEach { line ->
-            val beaconsOnLine = beacons.filter { it.y == line.key }.map { it.x..it.x }.toSet()
-            var ranges = listOf((minCoord..maxCoord))
-            beaconsOnLine.forEach { beaconPos ->
-                ranges = ranges.subtract(beaconPos)
-            }
-            line.value.forEach {
-                ranges = ranges.subtract(it)
-            }
-            //IDK wtf happens here. Change to a range intersection instead.
-            if(ranges.size == 1) {
-                val posX = ranges.first().first
-                println("Position: ${posX}, ${line.key}")
-                println(posX*4000000L + line.key)
-            }
-            ranges.forEach {
-                println("Position: ${it.first}, ${line.key}")
-            }
+    private fun addRanges(
+        rangePositions: HashMap<Int, HashSet<IntRange>>,
+        sensor: Pair<Int, Int>,
+        topY: Int,
+        bottomY: Int,
+        minCoord: Int,
+        maxCoord: Int
+    ) {
 
+        var minX = sensor.x
+        var maxX = sensor.x
+
+        //Go from top to middle
+        for (y in topY until sensor.y) {
+            if (y in minCoord..maxCoord) {
+                val range = minX.coerceAtLeast(minCoord)..maxX.coerceAtMost(maxCoord)
+                rangePositions.getOrPut(y) { hashSetOf() }.add(range)
+            }
+            minX--; maxX++
         }
 
-        return 0//line.size - beaconsOnLine
+        //From middle to bottom
+        for (y in sensor.y until bottomY) {
+            if (y in minCoord..maxCoord) {
+                val range = minX.coerceAtLeast(minCoord)..maxX.coerceAtMost(maxCoord)
+                rangePositions.getOrPut(y) { hashSetOf() }.add(range)
+            }
+            minX++; maxX--
+        }
     }
 
 }
@@ -127,5 +150,5 @@ fun List<IntRange>.subtract(remove: IntRange): List<IntRange> {
 }
 
 fun IntRange.isValid(): IntRange = apply {
-    if(first > last) println("Pair $this is invalid")
+    if (first > last) println("Pair $this is invalid")
 }

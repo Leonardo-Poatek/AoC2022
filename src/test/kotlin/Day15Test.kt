@@ -7,8 +7,14 @@ class Day15Test {
 
     @Test
     fun solve1() {
-       // assertEquals(26, solution.solve(sampleInput.lines(), 10, 0, 20))
-        assertEquals(873, solution.solve(realInput.lines(), 2_000_000, 0, 4_000_000))
+        assertEquals(26, solution.solve1(sampleInput.lines(), 10))
+        assertEquals(4919281, solution.solve1(realInput.lines(), 2_000_000))
+    }
+
+    @Test
+    fun solve2() {
+        assertEquals(56000011, solution.solve2(sampleInput.lines(), 0, 20))
+        assertEquals(12630143363767L, solution.solve2(realInput.lines(), 0, 4_000_000))
     }
 
     @Test
